@@ -6,7 +6,7 @@ var num;
 function timer() {
   setTimeout(function(){
     $("#text").prop('disabled', true).css({'background-color' : '#FFAEAE'});
-    $("#wpm").html("That's " + num*60/5 + " words per minute.");
+    // $("#wpm").html("That's " + num*60/5 + " words per minute.");
     $("#info").css('visibility', 'visible');
   }, seconds*3000);
 
