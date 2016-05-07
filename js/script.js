@@ -43,3 +43,7 @@ $("#reset").click(function(){
   $("#name").val("");
   $('#text').focus();
 });
+
+$("#submit").click(function(){
+  alert("Coming soon!")
+});
