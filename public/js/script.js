@@ -5,9 +5,24 @@ var num;
 
 function timer() {
   setTimeout(function(){
-    $("#text").prop('disabled', true).css({'background-color' : '#FFAEAE'});
+    $("#text").prop('disabled', true).blur().css({'background-color' : '#FFAEAE'});
     // $("#wpm").html("That's " + num*60/5 + " words per minute.");
     $("#info").css('visibility', 'visible');
+    
+    $('#score').val(num);
+    
+    var d = new Date();
+    var month = d.getMonth()+1;
+    month = month < 10 ? "0"+month : ""+month;
+    var hours = d.getHours();
+    hours = hours < 10 ? "0"+hours : ""+hours;
+    var minutes = d.getMinutes();
+    minutes = minutes < 10 ? "0"+minutes : ""+minutes;
+    var seconds = d.getSeconds();
+    seconds = seconds < 10 ? "0"+seconds : ""+seconds;
+    var date = ""+d.getFullYear()+month+d.getDate()+hours+minutes+seconds;
+    $('#date').val(date);
+    
   }, seconds*3000);
 
 }
@@ -44,6 +59,6 @@ $("#reset").click(function(){
   $('#text').focus();
 });
 
-$("#submit").click(function(){
-  alert("Coming soon!")
-});
+// $("#submit").click(function(){
+//   alert("Coming soon!")
+// });

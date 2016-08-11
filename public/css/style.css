@@ -29,6 +29,9 @@ input {
 label {
   font-size: 2em;
 }
+table {
+  font-size: 1.5em;
+}
 #num {
   font-size: 2em;
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>KeyMasher</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1>KeyMasher</h1>
+    <p>When you begin typing, you will have 3 seconds to type as much text as you can.</p>
+    <form>
+      <input id="text" type="text" value="" class="col-sm-12"><br><br>
+      <p>You have typed
+        <span id="num">0</span> characters.</p>
+      <p id="wpm"></p>
+      <input id="reset" type="button" value="reset" class="btn btn-lg">
+    </form>
+    <div id="info">
+      <form action="/score" method="POST">
+        <label for="name">Name: </label>
+        <input id="name" name="name" type="text" maxlength="30">
+        <input id="score" name="score_num" type="hidden">
+        <input id="date" name="date" type="hidden">
+        <input id="submit" type="submit" value="submit" class="btn btn-lg">
+      </form>
+    </div>
+  </div>
+  
+  <!-- scoreboard -->
+  <div class="container">
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Score</th>
+        <th>Name</th>
+        <th>Date & Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% rank=1 %>
+      <% @scores.order(score_num: :desc).each do |score| %>
+      <!--.limit(5) before .each-->
+        <tr>
+          <td><%= rank %></td>
+          <td><%= score.score_num %></td>
+          <td><%= score.name %></td>
+          <td><%= score.date[4..5] %>/<%= score.date[6..7] %>/<%= score.date[0..3] %> <%= score.date[8..9] %>:<%= score.date[10..11] %>:<%= score.date[12..13] %></td>
+          <% rank+=1 %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
