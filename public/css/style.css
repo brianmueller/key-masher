@@ -50,3 +50,6 @@ table {
   visibility: hidden;
   margin: 30px;
 }
+.red {
+  color: red;
+}

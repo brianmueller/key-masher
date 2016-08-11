@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20160810202205) do
     t.string  "name"
     t.integer "score_num"
     t.string  "date"
+    t.string  "ip"
   end
 
 end

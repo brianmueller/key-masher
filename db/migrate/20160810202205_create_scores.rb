@@ -5,6 +5,7 @@ class CreateScores < ActiveRecord::Migration
       t.string :name
       t.integer :score_num
       t.string :date
+      t.string :ip
     end
   end
   

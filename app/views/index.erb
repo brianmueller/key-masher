@@ -9,13 +9,23 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="css/style.css" type="text/css">
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script>
+    $(function(){
+      var ip = $('#ip_getter').html();
+      ip = ip.substring(71,ip.length).trim();
+      $('#ip').val(ip);
+      
+    });
+  </script>
 
 </head>
 
 <body>
   <div class="container text-center">
     <h1>KeyMasher</h1>
-    <p>When you begin typing, you will have 3 seconds to type as much text as you can.</p>
+    <p id="countdown">When you begin typing, you will have 3 seconds to type as much text as you can.</p>
+    
     <form>
       <input id="text" type="text" value="" class="col-sm-12"><br><br>
       <p>You have typed
@@ -26,13 +36,21 @@
     <div id="info">
       <form action="/score" method="POST">
         <label for="name">Name: </label>
-        <input id="name" name="name" type="text" maxlength="30">
+        <input id="name" name="name" type="text" maxlength="30" value="<%= $name %>">
+        <% $name = "" %>
         <input id="score" name="score_num" type="hidden">
         <input id="date" name="date" type="hidden">
+        <input id="ip" name="ip" type="hidden">
         <input id="submit" type="submit" value="submit" class="btn btn-lg">
       </form>
     </div>
+    
+    <p class="red"><%= $existing %></p>
+    <% $existing = "" %>
+    
   </div>
+  
+  
   
   <!-- scoreboard -->
   <div class="container">
@@ -54,11 +72,16 @@
           <td><%= score.score_num %></td>
           <td><%= score.name %></td>
           <td><%= score.date[4..5] %>/<%= score.date[6..7] %>/<%= score.date[0..3] %> <%= score.date[8..9] %>:<%= score.date[10..11] %>:<%= score.date[12..13] %></td>
+          <td style="visibility:hidden"><%= score.id %></td>
           <% rank+=1 %>
         </tr>
       <% end %>
     </tbody>
   </table>
+  </div>
+  
+  <div id="ip_getter" style="display:none">
+    <script type="text/javascript" src="https://l2.io/ip.js"></script>
   </div>
   
   <script src="js/script.js"></script>
