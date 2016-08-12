@@ -62,6 +62,7 @@ $("#text").keyup(function() {
 });
 
 $("#reset").click(function() {
+  $('#countdown').html("When you begin typing, you will have 3 seconds to type as much text as you can.");
   $("#num").html(0);
   $("#wpm").html("");
   $("#text").val("");
