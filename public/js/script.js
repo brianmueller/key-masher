@@ -1,15 +1,24 @@
 var started = false;
 var timerInterval;
 var seconds = 1;
-var num;
+// var num;
 var seconds_left = 3.0;
+var score = {};
 
 function timer() {
+  Object.defineProperty(score, "num", {
+    value: 0,
+    configurable: true,
+    writable: true
+  });
   setTimeout(function() {
     // $("#wpm").html("That's " + num*60/5 + " words per minute.");
-    $('#score').val(num);
+    Object.defineProperty(score, "num", {
+      configurable: true,
+      writable: false
+    });
   }, seconds * 3000);
-  return num;
+
 }
 
 
@@ -49,7 +58,7 @@ $('#text').focusout(
 
 
 $("#text").keydown(function() {
-  const num_static = timer();
+  timer();
   countdown();
   $("#text").css({
     'background-color': '#feea82' // yellow
@@ -57,9 +66,9 @@ $("#text").keydown(function() {
 });
 
 $("#text").keyup(function() {
-  num = $("#num").html();
-  num++;
-  $("#num").html(num);
+  score.num = $("#num").html();
+  score.num++;
+  $("#num").html(score.num);
 });
 
 $("#reset").click(function() {
@@ -73,7 +82,6 @@ $("#reset").click(function() {
   $("#text").prop('disabled', false).css({
     'background-color': 'white'
   });
-  // $("#name").val("");
   $('#text').focus();
 });
 
@@ -90,3 +98,7 @@ $("#submit").click(function() {
   var date = "" + d.getFullYear() + month + d.getDate() + hours + minutes + seconds;
   $('#date').val(date);
 });
+
+function insertNum() {
+  $('#score').val(score.num);
+}
