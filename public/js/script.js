@@ -9,6 +9,7 @@ function timer() {
     // $("#wpm").html("That's " + num*60/5 + " words per minute.");
     $('#score').val(num);
   }, seconds * 3000);
+  return num;
 }
 
 
@@ -48,7 +49,7 @@ $('#text').focusout(
 
 
 $("#text").keydown(function() {
-  timer();
+  const num_static = timer();
   countdown();
   $("#text").css({
     'background-color': '#feea82' // yellow
