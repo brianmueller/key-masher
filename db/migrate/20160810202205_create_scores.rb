@@ -14,3 +14,6 @@ class CreateScores < ActiveRecord::Migration
   end
   
 end
+
+# use `heroku pg:psql` to interact with heroku shell database
+# then use SQL commands, not ActiveRecord
