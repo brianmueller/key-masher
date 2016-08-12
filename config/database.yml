@@ -1,0 +1,5 @@
+production:
+  url: <%= ENV["DATABASE_URL"] %>
+  
+#   heroku addons:add heroku-postgresql
+#   also run ^
