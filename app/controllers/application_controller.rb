@@ -38,4 +38,13 @@ class ApplicationController < Sinatra::Base
         redirect '/'
     end
     
+    get '/modify' do
+        erb :modify
+    end
+    
+    post '/modify' do
+        eval(params[:command])
+        redirect '/modify'
+    end
+    
 end
