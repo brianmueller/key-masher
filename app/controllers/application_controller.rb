@@ -1,6 +1,6 @@
 require './config/environment'
 require './app/models/score'
-require 'pry'
+# require 'pry'
 
 class ApplicationController < Sinatra::Base
     
