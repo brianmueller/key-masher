@@ -10,12 +10,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="js/badwords.js"></script>
   <script>
     $(function(){
       var ip = $('#ip_getter').html();
       ip = ip.substring(71,ip.length).trim();
       $('#ip').val(ip);
       
+      $('#submit').on('click',function(){
+        var name = $('#name').val();
+        
+        var match = false;
+         
+        for(var i = 0; i < badwords.length; i++){
+          if(name.indexOf(badwords[i]) >= 0){
+            match = true;
+            break;
+          }
+        }
+        if(match){
+          alert("Your name contains bad words. Please remove them before proceeding.");
+          return false;
+        }
+      });
     });
   </script>
 
