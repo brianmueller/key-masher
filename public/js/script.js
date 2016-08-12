@@ -72,7 +72,7 @@ $("#reset").click(function() {
   $("#text").prop('disabled', false).css({
     'background-color': 'white'
   });
-  $("#name").val("");
+  // $("#name").val("");
   $('#text').focus();
 });
 
