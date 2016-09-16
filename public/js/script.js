@@ -104,6 +104,11 @@ $("#submit").click(function() {
   var date = "" + d.getFullYear() + month + d.getDate() + hours + minutes + seconds;
   $('#date').val(date);
   $('#score').val(score.num);
+  
+  // this.unbind();
+  // this.removeAttr("onclick");
+  
+  $(this).prop('onclick',null).off('click');
   return true;
 });
 
