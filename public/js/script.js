@@ -4,6 +4,12 @@ var seconds = 1;
 // var num;
 var seconds_left = 3.0;
 var score = {};
+score.num = 0;
+
+Object.defineProperty(score, "num", {
+  configurable: true,
+  writable: false
+});
 
 function timer() {
   Object.defineProperty(score, "num", {
@@ -97,8 +103,10 @@ $("#submit").click(function() {
   seconds = seconds < 10 ? "0" + seconds : "" + seconds;
   var date = "" + d.getFullYear() + month + d.getDate() + hours + minutes + seconds;
   $('#date').val(date);
+  $('#score').val(score.num);
+  return true;
 });
 
 function insertNum() {
-  $('#score').val(score.num);
+
 }
